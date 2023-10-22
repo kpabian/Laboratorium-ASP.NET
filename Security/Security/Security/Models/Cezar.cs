@@ -16,15 +16,12 @@ namespace Security.Models
 
         public string EncryptingCezar()
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (char c in Text)
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (ELetters c in Text)
             {
-                int a = c + Shift;
-                if(a )
-                sb = sb.Append(c + Shift);
-
+                stringBuilder.Append((char)(c + Shift));
             }
-            return "";
+            return stringBuilder.ToString();
         }
 
 
