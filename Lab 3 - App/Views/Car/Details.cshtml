@@ -1,0 +1,27 @@
+﻿@using Laboratorium_3___App.Models;
+@model Car
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Dane konta o @Model.NrRejestracyjny to:</h1>
+<p>Model - @Model.CarModel</p>
+<p>Producent - @Model.Producent</p>
+@if(Model.PojemnoscSilnika is not null)
+{
+    <p>Pojemność silnika - @Model.PojemnoscSilnika</p>
+}
+@if (Model.Moc is not null)
+{
+    <p>Moc - @Model.Moc</p>
+}
+@if (Model.RodzajSilnika is not null)
+{
+    <p>Rodzaj silnika - @Model.RodzajSilnika</p>
+}
+<p>Właściciel - @Model.Wlasciciel</p>
+<form asp-action="Details" method="post">
+    <button class="btn btn-primary" action="Index">Powrót do Kontaktów</button>
+</form>
