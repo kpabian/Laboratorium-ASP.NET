@@ -1,11 +1,21 @@
-﻿namespace Lab_4.Models
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Lab_4.Models
 {
     public class MemoryContactService : IContactService
     {
         private readonly Dictionary<int, Contact> _items = new Dictionary<int, Contact>();
         private int id = 1;
+
+        IDateTimeProvider _timeProvider;
+
+        public MemoryContactService(IDateTimeProvider param)
+        {
+            _timeProvider = param;
+        }
         public void Add(Contact contact)
         {
+            contact.Created = _timeProvider.DateTimeMethod();
             contact.ID = id++;
             _items.Add(contact.ID, contact);
         }

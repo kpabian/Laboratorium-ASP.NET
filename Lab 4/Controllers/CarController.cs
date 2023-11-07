@@ -3,18 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lab_4.Controllers
 {
-    public class ContactController : Controller
+    public class CarController : Controller
     {
+        private readonly ICarService _carService;
 
-        private readonly IContactService _contactService;
-
-        public ContactController(IContactService contactService)
+        public CarController(ICarService carService)
         {
-            _contactService = contactService;
+            _carService = carService;
         }
+
         public IActionResult Index()
         {
-            return View(_contactService.FindAll());
+            return View(_carService.FindAll());
         }
 
         [HttpGet]
@@ -24,27 +24,31 @@ namespace Lab_4.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Contact model)
+        public IActionResult Create(Car model)
         {
             if (ModelState.IsValid)
             {
-                _contactService.Add(model);
+                _carService.Add(model);
                 return RedirectToAction("Index");
             }
-            return View();
+            else
+            {
+                return View(model);
+            }
         }
+
         [HttpGet]
         public IActionResult Update(int id)
         {
-            return View(_contactService.FindById(id));
+            return View(_carService.FindById(id));
         }
 
         [HttpPost]
-        public IActionResult Update(Contact model)
+        public IActionResult Update(Car model)
         {
             if (ModelState.IsValid)
             {
-                _contactService.Update(model);
+                _carService.Update(model);
                 return RedirectToAction("Index");
             }
             return View();
@@ -53,23 +57,23 @@ namespace Lab_4.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            return View(_contactService.FindById(id));
+            return View(_carService.FindById(id));
         }
 
         [HttpPost]
-        public IActionResult Delete(Contact model)
+        public IActionResult Delete(Car model)
         {
-            _contactService.RemoveById(model.ID);
+            _carService.RemoveById(model.ID);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return View(_contactService.FindById(id));
+            return View(_carService.FindById(id));
         }
         [HttpPost]
-        public IActionResult Details() 
+        public IActionResult Details()
         {
             return RedirectToAction("Index");
         }

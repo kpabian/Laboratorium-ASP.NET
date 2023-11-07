@@ -12,6 +12,12 @@ namespace Lab_4___App
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<IContactService, MemoryContactService>();
 
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddSingleton<ICarService, MemoryCarService>();
+
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

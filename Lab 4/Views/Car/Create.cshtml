@@ -1,20 +1,18 @@
-﻿@using Lab_3___App.Models;﻿﻿
-@model Car
+﻿@model Car
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-<h1>Edytuj dane samochodu</h1>
-<form asp-controller="Car" asp-action="Update" method="post">
-    <input asp-for="ID" />
+<h1>Dodaj nowy samochód</h1>
+<form asp-controller="Car" asp-action="Create" method="post">
     <div class="mb-3">
-        <label asp-for="CarModel">Model</label>
+        <label asp-for="CarModel"></label>
         <input class="form-control" asp-for="CarModel" />
         <span class="text-danger" asp-validation-for="CarModel"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Producent">Producent</label>
+        <label asp-for="Producent"></label>
         <input class="form-control" asp-for="Producent" />
         <span class="text-danger" asp-validation-for="Producent"></span>
     </div>
@@ -34,16 +32,22 @@
         <span class="text-danger" asp-validation-for="RodzajSilnika"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="NrRejestracyjny">Numer rejestracyjny</label>
+        <label asp-for="NrRejestracyjny"></label>
         <input class="form-control" asp-for="NrRejestracyjny" />
         <span class="text-danger" asp-validation-for="NrRejestracyjny"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Wlasciciel">Właściciel</label>
+        <label asp-for="Wlasciciel"></label>
         <input class="form-control" asp-for="Wlasciciel" />
         <span class="text-danger" asp-validation-for="Wlasciciel"></span>
     </div>
     <div class="mb-3">
-        <button class="btn btn-primary" type="submit">Zapisz</button>
+        <label asp-for="Priority"></label>
+        <select class="form-control" asp-for="Priority" asp-items="@Html.GetEnumSelectList<Priority>()"></select>
+        <span class="text-danger" asp-validation-for="Priority"></span>
     </div>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Utwórz</button>
+    </div>
+    
 </form>

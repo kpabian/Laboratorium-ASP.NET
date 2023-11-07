@@ -7,5 +7,6 @@
         void Update(Contact contact);
         List<Contact> FindAll();
         Contact? FindById(int id);
+
     }
 }
